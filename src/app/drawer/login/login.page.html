@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="text-center">Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="d-flex align-items-center justify-content-center min-vh-100">
+    <div class="login-container">
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" formControlName="email" required></ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
+          <p>Email is required and must be valid.</p>
+        </ion-text>
+
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" formControlName="password" required></ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+          <p>Password is required.</p>
+        </ion-text>
+
+        <!-- <ion-button expand="full" type="submit" [disabled]="loginForm.invalid">Login</ion-button> -->
+        <ion-button expand="full" type="submit" [disabled]="loginForm.invalid">Login</ion-button>
+      </form>
+
+      <ion-row class="ion-justify-content-center mt-3">
+        <p>Don't have an account? <a routerLink="/signup">Sign up</a></p>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>
